@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1EC21389-4268-4FFA-9450-95A53EF5AAFD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BundledocsApiWrapper35</RootNamespace>
+    <AssemblyName>BundledocsApiWrapper35</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.2\lib\net35\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bundledocs\Api\AnnotationsApi.cs" />
+    <Compile Include="Bundledocs\Api\BundlesApi.cs" />
+    <Compile Include="Bundledocs\Api\DocumentsApi.cs" />
+    <Compile Include="Bundledocs\Api\EventsApi.cs" />
+    <Compile Include="Bundledocs\Api\GroupsApi.cs" />
+    <Compile Include="Bundledocs\Api\OAuthTokenApi.cs" />
+    <Compile Include="Bundledocs\Api\ReceiptsApi.cs" />
+    <Compile Include="Bundledocs\Api\SectionsApi.cs" />
+    <Compile Include="Bundledocs\Api\UsersApi.cs" />
+    <Compile Include="Bundledocs\Client\ApiClient.cs" />
+    <Compile Include="Bundledocs\Client\ApiException.cs" />
+    <Compile Include="Bundledocs\Client\ApiResponse.cs" />
+    <Compile Include="Bundledocs\Client\Configuration.cs" />
+    <Compile Include="Bundledocs\Client\ExceptionFactory.cs" />
+    <Compile Include="Bundledocs\Client\IApiAccessor.cs" />
+    <Compile Include="Bundledocs\Model\ActivateGroupMembershipBean.cs" />
+    <Compile Include="Bundledocs\Model\BaseSubscription.cs" />
+    <Compile Include="Bundledocs\Model\Brief.cs" />
+    <Compile Include="Bundledocs\Model\BriefBean.cs" />
+    <Compile Include="Bundledocs\Model\BriefDocument.cs" />
+    <Compile Include="Bundledocs\Model\BriefDocumentAnnotation.cs" />
+    <Compile Include="Bundledocs\Model\BriefDocumentBean.cs" />
+    <Compile Include="Bundledocs\Model\BriefDocumentBulkActionsBean.cs" />
+    <Compile Include="Bundledocs\Model\BriefDocumentDisplayOrderUpdateBean.cs" />
+    <Compile Include="Bundledocs\Model\BriefMigrationInvitation.cs" />
+    <Compile Include="Bundledocs\Model\BriefReceipt.cs" />
+    <Compile Include="Bundledocs\Model\BriefReceiptBean.cs" />
+    <Compile Include="Bundledocs\Model\BriefReceiptDownloadInvitation.cs" />
+    <Compile Include="Bundledocs\Model\BriefShare.cs" />
+    <Compile Include="Bundledocs\Model\CreateBlankDocumentsBean.cs" />
+    <Compile Include="Bundledocs\Model\CreateBriefDocumentAnnotationBean.cs" />
+    <Compile Include="Bundledocs\Model\CreateBriefDocumentsBeanExternalCreateDocumentBean.cs" />
+    <Compile Include="Bundledocs\Model\EmailAddressBean.cs" />
+    <Compile Include="Bundledocs\Model\ExternalCreateDocumentBean.cs" />
+    <Compile Include="Bundledocs\Model\ModelObject.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiEvent.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponse.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBaseSubscription.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBrief.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBriefBean.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBriefDocument.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBriefDocumentAnnotation.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBriefDocumentBean.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBriefMigrationInvitation.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBriefReceipt.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBriefReceiptDownloadInvitation.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongBriefShare.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongListBriefDocument.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongListBriefMigrationInvitation.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongListBriefReceipt.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongListBriefShare.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongListUserGroupBean.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongOAuth2ApiEvent.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongOAuth2BearerAccessToken.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongOAuthApiMessage.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongUserBean.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongUserBeanSimple.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2ApiResponseStrongUserGroupBean.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2BasicAccessCode.cs" />
+    <Compile Include="Bundledocs\Model\OAuth2BearerAccessToken.cs" />
+    <Compile Include="Bundledocs\Model\OAuthApiMessage.cs" />
+    <Compile Include="Bundledocs\Model\PartitionKeyRowKeyBean.cs" />
+    <Compile Include="Bundledocs\Model\SendBriefReceiptDownloadInvitationBean.cs" />
+    <Compile Include="Bundledocs\Model\UploadDocument.cs" />
+    <Compile Include="Bundledocs\Model\UserBean.cs" />
+    <Compile Include="Bundledocs\Model\UserBeanSimple.cs" />
+    <Compile Include="Bundledocs\Model\UserGroupBean.cs" />
+    <Compile Include="Bundledocs\Model\UserGroupMemberBean.cs" />
+    <Compile Include="Extensions\ReadToEndExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
