@@ -29,28 +29,32 @@ Partial Class FrmMain
         Me.lblOutputHeader = New System.Windows.Forms.Label()
         Me.pnlBrowserContainer = New System.Windows.Forms.Panel()
         Me.wbMain = New System.Windows.Forms.WebBrowser()
+        Me.pnlRight = New System.Windows.Forms.TableLayoutPanel()
         Me.txtApiMe = New System.Windows.Forms.TextBox()
-        Me.pnlMain.SuspendLayout
-        Me.pnlBrowserContainer.SuspendLayout
-        Me.SuspendLayout
+        Me.lstBundles = New System.Windows.Forms.ListBox()
+        Me.lstSections = New System.Windows.Forms.ListBox()
+        Me.pnlMain.SuspendLayout()
+        Me.pnlBrowserContainer.SuspendLayout()
+        Me.pnlRight.SuspendLayout()
+        Me.SuspendLayout()
         '
         'pnlMain
         '
-        Me.pnlMain.AutoScroll = true
+        Me.pnlMain.AutoScroll = True
         Me.pnlMain.ColumnCount = 2
-        Me.pnlMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100!))
-        Me.pnlMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 278!))
+        Me.pnlMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.pnlMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 278.0!))
         Me.pnlMain.Controls.Add(Me.txtAccessToken, 0, 2)
         Me.pnlMain.Controls.Add(Me.lblAuthenticateHeader, 0, 0)
         Me.pnlMain.Controls.Add(Me.lblOutputHeader, 1, 0)
         Me.pnlMain.Controls.Add(Me.pnlBrowserContainer, 0, 1)
-        Me.pnlMain.Controls.Add(Me.txtApiMe, 1, 1)
+        Me.pnlMain.Controls.Add(Me.pnlRight, 1, 1)
         Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlMain.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.pnlMain.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.pnlMain.Location = New System.Drawing.Point(0, 0)
         Me.pnlMain.Name = "pnlMain"
         Me.pnlMain.RowCount = 3
-        Me.pnlMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30!))
+        Me.pnlMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.pnlMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.77821!))
         Me.pnlMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.221797!))
         Me.pnlMain.Size = New System.Drawing.Size(844, 626)
@@ -60,16 +64,16 @@ Partial Class FrmMain
         '
         Me.txtAccessToken.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtAccessToken.Location = New System.Drawing.Point(3, 579)
-        Me.txtAccessToken.Multiline = true
+        Me.txtAccessToken.Multiline = True
         Me.txtAccessToken.Name = "txtAccessToken"
-        Me.txtAccessToken.ReadOnly = true
+        Me.txtAccessToken.ReadOnly = True
         Me.txtAccessToken.Size = New System.Drawing.Size(560, 44)
         Me.txtAccessToken.TabIndex = 6
         '
         'lblAuthenticateHeader
         '
         Me.lblAuthenticateHeader.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblAuthenticateHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblAuthenticateHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAuthenticateHeader.Location = New System.Drawing.Point(3, 0)
         Me.lblAuthenticateHeader.Name = "lblAuthenticateHeader"
         Me.lblAuthenticateHeader.Size = New System.Drawing.Size(560, 30)
@@ -80,7 +84,7 @@ Partial Class FrmMain
         'lblOutputHeader
         '
         Me.lblOutputHeader.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblOutputHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblOutputHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblOutputHeader.Location = New System.Drawing.Point(569, 0)
         Me.lblOutputHeader.Name = "lblOutputHeader"
         Me.lblOutputHeader.Size = New System.Drawing.Size(272, 30)
@@ -106,38 +110,79 @@ Partial Class FrmMain
         Me.wbMain.Size = New System.Drawing.Size(560, 540)
         Me.wbMain.TabIndex = 0
         '
+        'pnlRight
+        '
+        Me.pnlRight.ColumnCount = 1
+        Me.pnlRight.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.pnlRight.Controls.Add(Me.txtApiMe, 0, 0)
+        Me.pnlRight.Controls.Add(Me.lstBundles, 0, 1)
+        Me.pnlRight.Controls.Add(Me.lstSections, 0, 2)
+        Me.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlRight.Location = New System.Drawing.Point(569, 33)
+        Me.pnlRight.Name = "pnlRight"
+        Me.pnlRight.RowCount = 4
+        Me.pnlRight.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40.0!))
+        Me.pnlRight.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85.0!))
+        Me.pnlRight.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85.0!))
+        Me.pnlRight.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.pnlRight.Size = New System.Drawing.Size(272, 540)
+        Me.pnlRight.TabIndex = 7
+        '
         'txtApiMe
         '
         Me.txtApiMe.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtApiMe.Location = New System.Drawing.Point(569, 33)
-        Me.txtApiMe.Multiline = true
+        Me.txtApiMe.Location = New System.Drawing.Point(3, 3)
+        Me.txtApiMe.Multiline = True
         Me.txtApiMe.Name = "txtApiMe"
-        Me.txtApiMe.ReadOnly = true
-        Me.txtApiMe.Size = New System.Drawing.Size(272, 540)
-        Me.txtApiMe.TabIndex = 5
+        Me.txtApiMe.ReadOnly = True
+        Me.txtApiMe.Size = New System.Drawing.Size(266, 34)
+        Me.txtApiMe.TabIndex = 6
+        '
+        'lstBundles
+        '
+        Me.lstBundles.DisplayMember = "Title"
+        Me.lstBundles.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstBundles.FormattingEnabled = True
+        Me.lstBundles.ItemHeight = 14
+        Me.lstBundles.Location = New System.Drawing.Point(3, 43)
+        Me.lstBundles.Name = "lstBundles"
+        Me.lstBundles.Size = New System.Drawing.Size(266, 79)
+        Me.lstBundles.TabIndex = 7
+        '
+        'lstSections
+        '
+        Me.lstSections.DisplayMember = "Description"
+        Me.lstSections.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstSections.FormattingEnabled = True
+        Me.lstSections.ItemHeight = 14
+        Me.lstSections.Location = New System.Drawing.Point(3, 128)
+        Me.lstSections.Name = "lstSections"
+        Me.lstSections.Size = New System.Drawing.Size(266, 79)
+        Me.lstSections.TabIndex = 8
         '
         'FrmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(844, 626)
         Me.Controls.Add(Me.pnlMain)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.pnlMain.ResumeLayout(false)
-        Me.pnlMain.PerformLayout
-        Me.pnlBrowserContainer.ResumeLayout(false)
-        Me.ResumeLayout(false)
+        Me.pnlMain.ResumeLayout(False)
+        Me.pnlMain.PerformLayout()
+        Me.pnlBrowserContainer.ResumeLayout(False)
+        Me.pnlRight.ResumeLayout(False)
+        Me.pnlRight.PerformLayout()
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
 
     Private WithEvents pnlMain As TableLayoutPanel
     Private WithEvents txtAccessToken As TextBox
     Private WithEvents lblAuthenticateHeader As Label
     Private WithEvents lblOutputHeader As Label
     Private WithEvents pnlBrowserContainer As Panel
-    Private WithEvents txtApiMe As TextBox
     Friend WithEvents wbMain As WebBrowser
 
     Public Sub New()
@@ -152,4 +197,9 @@ End Sub
     Protected Overrides Sub Finalize()
         MyBase.Finalize()
     End Sub
+
+    Friend WithEvents pnlRight As TableLayoutPanel
+    Private WithEvents txtApiMe As TextBox
+    Friend WithEvents lstBundles As ListBox
+    Friend WithEvents lstSections As ListBox
 End Class
