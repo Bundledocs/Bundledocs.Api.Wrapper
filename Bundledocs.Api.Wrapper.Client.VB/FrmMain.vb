@@ -42,4 +42,24 @@ Public Class FrmMain
             Next
         End If
     End Sub
+
+    Private Sub btnChooseFiles_Click(sender As Object, e As EventArgs) Handles btnChooseFiles.Click
+        lstDocuments.Items.Clear()
+        If (dlgOpenFiles.ShowDialog().Equals(DialogResult.OK)) Then
+            lstDocuments.Items.AddRange(dlgOpenFiles.FileNames)
+        End If
+    End Sub
+
+    Private Sub btnUpload_Click(sender As Object, e As EventArgs) Handles btnUpload.Click
+        If (lstBundles.SelectedItem IsNot Nothing) Then
+            Dim selectedSection As BriefDocument = lstSections.SelectedItem
+            For Each fileName As String In lstDocuments.Items
+                _bundledocsApi.Documents.Create(selectedSection, fileName)
+            Next
+
+            _bundledocsApi.Events.WaitForUploadToComplete(selectedSection.ForeignKey, lstDocuments.Items.Count)
+
+            MessageBox.Show("Upload Complete")
+        End If
+    End Sub
 End Class
