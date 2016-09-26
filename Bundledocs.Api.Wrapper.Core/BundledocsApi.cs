@@ -87,6 +87,11 @@
             return _bundles.BundlesDeleteBundle(_authorizationHeader, partitionKey, rowKey)?.Data.FirstOrDefault();
         }
 
+        public OAuthApiMessage Generate(string partitionKey, string rowKey, Brief generateBriefBean)
+        {
+            return _bundles.BundlesGenerateBundle(_authorizationHeader, partitionKey, rowKey, BriefBean.FromBrief(generateBriefBean))?.Messages.FirstOrDefault();
+        }
+
         public OAuthApiMessage Generate(string partitionKey, string rowKey, BriefBean generateBriefBean)
         {
             return _bundles.BundlesGenerateBundle(_authorizationHeader, partitionKey, rowKey, generateBriefBean)?.Messages.FirstOrDefault();
@@ -250,6 +255,11 @@
                     }
                 }
 
+                if (OAuth2ApiEventUpload != null)
+                {
+                    responseEvents.ForEach(k => OAuth2ApiEventUpload(k));
+                }
+
             } while (converted < uploadedFilesCount * 2);
 
             return uploadStatus;
@@ -290,6 +300,11 @@
                     }
                 }
 
+                if (OAuth2ApiEventGenerate != null)
+                {
+                    responseEvents.ForEach(k => OAuth2ApiEventGenerate(k));
+                }
+
             } while (!stopListening);
 
             return generateStatus;
@@ -299,5 +314,10 @@
         {
             return _events.EventsGet(_authorizationHeader, context).Data ?? new List<OAuth2ApiEvent>();
         }
+                
+        public event OAuth2ApiEventHandler OAuth2ApiEventGenerate;
+        public event OAuth2ApiEventHandler OAuth2ApiEventUpload;
+
+        public delegate void OAuth2ApiEventHandler(OAuth2ApiEvent OAuth2ApiEvent);
     }
 }

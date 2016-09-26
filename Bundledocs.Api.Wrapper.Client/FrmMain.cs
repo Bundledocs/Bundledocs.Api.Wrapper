@@ -14,9 +14,9 @@
 
         public struct OAuthApiCredentials
         {
-            public static readonly string ClientId = App.Default.ClientID;
-            public static readonly string ClientSecret = App.Default.ClientSecret;
-            public static readonly string RedirectUri = App.Default.ClientRedirectUri;
+            public static readonly string ClientId = App.Default.AppID;
+            public static readonly string ClientSecret = App.Default.AppSecret;
+            public static readonly string RedirectUri = App.Default.AppRedirectUri;
         }
 
         public FrmMain()
