@@ -2,25 +2,44 @@
 
 ##Common Functions
 
-###Admin
-login
+###Users
+login  
+update options
 
 ###Bundles
 create  
 delete  
 generate  
 download  
+receipts  
+share
+migrate  
+copy
 
 ###Sections
 create  
 rename  
 delete  
+copy  
+get
+toggle included
+toggle expanded
 
 ###Documents
 create  
 download  
 rename  
-delete
+delete  
+merge  
+copy  
+toggle included
 
-###Receipts
-download
+###Groups
+create  
+get  
+delete  
+add members  
+delete members
+
+###Authentification
+make token
