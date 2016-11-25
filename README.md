@@ -21,16 +21,16 @@
 	* __`BriefBean loadedBrief = _bundledocsApi.Bundles.Get(PartitionKey, RowKey);`__  
 * Generate    
 	* To generate a bundle
-	* __`OAuthApiMessage generateMessage = _bundledocsApi.Bundles.Generate(loadedBriefPartitionKey, loadedBriefRowKey, BriefBean);`__
+		* __`OAuthApiMessage generateMessage = _bundledocsApi.Bundles.Generate(loadedBriefPartitionKey, loadedBriefRowKey, BriefBean);`__
+	* To wait for the generation to complete  
+		* __`bool generateComplete = _bundledocsApi.Events.WaitForGenerateToComplete(RowKey);`__ 
 * Download  
 	* To open a download stream for a bundle  
 		* __`Stream myStream = _bundledocsApi.Bundles.Download(PartitionKey, RowKey);`__  
 	* To save the bundle to the computer  
 		* __`byte[] myFile = myStream.ReadToEnd();`  
 		`string newFilePath = $@"{App.Default.TempFolder}{Guid.NewGuid().ToString("n")}.pdf";`  
-		`File.WriteAllBytes(newFilePath, myFile);`__  
-	* To wait for the bundle to complete  
-		* __`bool generateComplete = _bundledocsApi.Events.WaitForGenerateToComplete(RowKey);`__  
+		`File.WriteAllBytes(newFilePath, myFile);`__   
 * Receipts  
 	* To get a list of bundle receipts  
 		* __`List<BriefReceipt> briefReceipts = _bundledocsApi.Bundles.Receipts(PartitionKey, RowKey);`__  
@@ -55,7 +55,7 @@ To access a section the containing bundle must first be loaded
 * Load
 	* To load the sections of a bundle
 		* __`IEnumerable<BriefDocument> sections = _bundledocsApi.Bundles.Tree(BriefPartitionKey, BriefRowKey).Where(k => k.Type == "HEADER")`__
-	* To load a section of a bundle
+	* To load a specific section of a bundle
 		* __`BriefDocument section = _bundledocsApi.Bundles.Tree(BriefPartitionKey, BriefRowKey).Where(k => k.Type == "HEADER" && k.Description == "sectionName").FirstOrDefault();`__
 
 ##Documents
@@ -66,7 +66,7 @@ To access a section the containing bundle must first be loaded
 		* __`bool completed = _bundledocsApi.Events.WaitForUploadToComplete(uploadLocation.ForeignKey);`__  
 * Download  
 	* To open a download stream for a document  
-		* __`Stream myStream = _bundledocsApi.Documents.Download(documentToDownloadPartitionKey, documentToDownloadRowKey);`__  
+		* __`Stream myStream = _bundledocsApi.Documents.Download(documentPartitionKey, documentRowKey);`__  
 	* To save the document to the computer  
 		* __`byte[] myFile = myStream.ReadToEnd();`  
 		`string newFilePath = $@"{App.Default.TempFolder}{Guid.NewGuid().ToString("n")}.pdf";`  
