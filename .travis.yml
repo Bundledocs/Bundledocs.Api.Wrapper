@@ -1,2 +1,2 @@
 language: csharp
-solution: ./src/Bundledocs.Api.Wrapper.sln
+solution: Bundledocs.Api.Wrapper.sln
