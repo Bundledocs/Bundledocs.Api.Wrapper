@@ -1,74 +1,79 @@
 #Bundledocs Api Wrapper Common Functions
 
+##Wrapper
+* To access the api wrapper
+	* __`protected BundledocsApi _bundledocsApi = BundledocsApi.New(App.Default.authorization);`__
+
 ##Users
 * Load User
-	* `UserBean user = _bundledocsApi.Users.Me();`
+	* The App.settings file must have a user's authorization key stored in order to access their account
+	* __`UserBean user = _bundledocsApi.Users.Me();`__
 
 ##Bundles
 * Create  
 	* To create a new bundle
-	* `BriefBean briefBean = _bundledocsApi.Bundles.Create(PartitionKey, RowKey);`
+	* __`BriefBean briefBean = _bundledocsApi.Bundles.Create(PartitionKey, RowKey);`__
 * Delete  
 	* To delete a bundle
- 	* `BriefBean deletedBrief = _bundledocsApi.Bundles.Delete(PartitionKey, RowKey);`
+ 	* __`BriefBean deletedBrief = _bundledocsApi.Bundles.Delete(PartitionKey, RowKey);`__
 * Load  
 	* To load a bundle
-	* `BriefBean loadedBrief = _bundledocsApi.Bundles.Get(PartitionKey, RowKey);`  
+	* __`BriefBean loadedBrief = _bundledocsApi.Bundles.Get(PartitionKey, RowKey);`__  
 * Generate    
 	* To generate a bundle
-	* `OAuthApiMessage generateMessage = _bundledocsApi.Bundles.Generate(loadedBriefPartitionKey, loadedBriefRowKey, BriefBean);`
+	* __`OAuthApiMessage generateMessage = _bundledocsApi.Bundles.Generate(loadedBriefPartitionKey, loadedBriefRowKey, BriefBean);`__
 * Download  
 	* To open a download stream for a bundle  
-		* `Stream myStream = _bundledocsApi.Bundles.Download(PartitionKey, RowKey);`  
+		* __`Stream myStream = _bundledocsApi.Bundles.Download(PartitionKey, RowKey);`__  
 	* To save the bundle to the computer  
-		* `byte[] myFile = myStream.ReadToEnd();`  
+		* __`byte[] myFile = myStream.ReadToEnd();`  
 		`string newFilePath = $@"{App.Default.TempFolder}{Guid.NewGuid().ToString("n")}.pdf";`  
-		`File.WriteAllBytes(newFilePath, myFile);`  
+		`File.WriteAllBytes(newFilePath, myFile);`__  
 	* To wait for the bundle to complete  
-		* `bool generateComplete = _bundledocsApi.Events.WaitForGenerateToComplete(RowKey);`  
+		* __`bool generateComplete = _bundledocsApi.Events.WaitForGenerateToComplete(RowKey);`__  
 * Receipts  
 	* To get a list of bundle receipts  
-		* `List<BriefReceipt> briefReceipts = _bundledocsApi.Bundles.Receipts(PartitionKey, RowKey);`  
+		* __`List<BriefReceipt> briefReceipts = _bundledocsApi.Bundles.Receipts(PartitionKey, RowKey);`__  
 	* To open a download stream for a receipt  
-		* `Stream briefReceiptStream = _bundledocsApi.Receipts.Download(ReceiptPartitionKey, ReceiptRowKey);`  
+		* __`Stream briefReceiptStream = _bundledocsApi.Receipts.Download(ReceiptPartitionKey, ReceiptRowKey);`__  
 	* To save the receipt to the computer  
-		* `byte[] myFile = briefReceiptStream.ReadToEnd();`  
+		* __`byte[] myFile = briefReceiptStream.ReadToEnd();`  
 		`string newFilePath = $@"{App.Default.TempFolder}{Guid.NewGuid().ToString("n")}.pdf";`  
-		`File.WriteAllBytes(newFilePath, myFile);`  
+		`File.WriteAllBytes(newFilePath, myFile);`__  
 
 ##Sections
 To access a section the containing bundle must first be loaded  
 * Create  
 	* To create a new section
-	* `BriefDocument newSection = _bundledocsApi.Sections.Create(loadedBriefPartitionKey, loadedBriefRowKey, sectionName);`
+	* __`BriefDocument newSection = _bundledocsApi.Sections.Create(loadedBriefPartitionKey, loadedBriefRowKey, sectionName);`__
 * Rename  
 	* To rename a section
-	* `BriefDocument renamedSection = _bundledocsApi.Sections.Rename(sectionPartitionKey, sectionRowKey, newName);`
+	* __`BriefDocument renamedSection = _bundledocsApi.Sections.Rename(sectionPartitionKey, sectionRowKey, newName);`__
 * Delete  
 	* To delete a section
-	* `BriefDocument deletedSection = _bundledocsApi.Sections.Delete(sectionPartitionKey, sectionRowKey);`
+	* __`BriefDocument deletedSection = _bundledocsApi.Sections.Delete(sectionPartitionKey, sectionRowKey);`__
 * Load
 	* To load the sections of a bundle
-		* `IEnumerable<BriefDocument> sections = _bundledocsApi.Bundles.Tree(BriefPartitionKey, BriefRowKey).Where(k => k.Type == "HEADER")`
+		* __`IEnumerable<BriefDocument> sections = _bundledocsApi.Bundles.Tree(BriefPartitionKey, BriefRowKey).Where(k => k.Type == "HEADER")`__
 	* To load a section of a bundle
-		* `BriefDocument section = _bundledocsApi.Bundles.Tree(BriefPartitionKey, BriefRowKey).Where(k => k.Type == "HEADER" && k.Description == "sectionName").FirstOrDefault();`
+		* __`BriefDocument section = _bundledocsApi.Bundles.Tree(BriefPartitionKey, BriefRowKey).Where(k => k.Type == "HEADER" && k.Description == "sectionName").FirstOrDefault();`__
 
 ##Documents
 * Create  
 	* To add a document to a section  
-		* `bool isSuccess = _bundledocsApi.Documents.Create(loadedSection, FileLocation);`  
+		* __`bool isSuccess = _bundledocsApi.Documents.Create(loadedSection, FileLocation);`__  
 	* To wait for the upload to complete  
-		* `bool completed = _bundledocsApi.Events.WaitForUploadToComplete(uploadLocation.ForeignKey);`  
+		* __`bool completed = _bundledocsApi.Events.WaitForUploadToComplete(uploadLocation.ForeignKey);`__  
 * Download  
 	* To open a download stream for a document  
-		* `Stream myStream = _bundledocsApi.Documents.Download(documentToDownloadPartitionKey, documentToDownloadRowKey);`  
+		* __`Stream myStream = _bundledocsApi.Documents.Download(documentToDownloadPartitionKey, documentToDownloadRowKey);`__  
 	* To save the document to the computer  
-		* `byte[] myFile = myStream.ReadToEnd();`  
+		* __`byte[] myFile = myStream.ReadToEnd();`  
 		`string newFilePath = $@"{App.Default.TempFolder}{Guid.NewGuid().ToString("n")}.pdf";`  
-		`File.WriteAllBytes(newFilePath, myFile);`  
+		`File.WriteAllBytes(newFilePath, myFile);`__  
 * Rename  
 	* To rename a document  
-	* `BriefDocument renamedDocument = _bundledocsApi.Documents.Rename(PartitionKey, RowKey, newName);`  
+	* __`BriefDocument renamedDocument = _bundledocsApi.Documents.Rename(PartitionKey, RowKey, newName);`__  
 * Delete  
 	* To delete a document  
-	* `BriefDocument deletedDocument = _bundledocsApi.Documents.Delete(documentToDeletePartitionKey, documentToDeleteRowKey);`  
+	* __`BriefDocument deletedDocument = _bundledocsApi.Documents.Delete(documentToDeletePartitionKey, documentToDeleteRowKey);`__  
