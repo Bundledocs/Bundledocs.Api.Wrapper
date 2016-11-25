@@ -1,12 +1,10 @@
-#Bundledocs Api Wrapper
+#Bundledocs Api Wrapper Common Functions
 
-##Common Functions
-
-###Users
+##Users
 * Load User
 	* `UserBean user = _bundledocsApi.Users.Me();`
 
-###Bundles
+##Bundles
 * Create  
 	* To create a new bundle
 	* `BriefBean briefBean = _bundledocsApi.Bundles.Create(PartitionKey, RowKey);`
@@ -38,7 +36,7 @@
 		`string newFilePath = $@"{App.Default.TempFolder}{Guid.NewGuid().ToString("n")}.pdf";`  
 		`File.WriteAllBytes(newFilePath, myFile);`  
 
-###Sections
+##Sections
 To access a section the containing bundle must first be loaded  
 * Create  
 	* To create a new section
@@ -55,7 +53,7 @@ To access a section the containing bundle must first be loaded
 	* To load a section of a bundle
 		* `BriefDocument section = _bundledocsApi.Bundles.Tree(BriefPartitionKey, BriefRowKey).Where(k => k.Type == "HEADER" && k.Description == "sectionName").FirstOrDefault();`
 
-###Documents
+##Documents
 * Create  
 	* To add a document to a section  
 		* `bool isSuccess = _bundledocsApi.Documents.Create(loadedSection, FileLocation);`  
